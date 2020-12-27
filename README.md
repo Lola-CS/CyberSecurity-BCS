@@ -22,24 +22,24 @@ This document contains the following details:
 
 The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
 
-Load balancing ensures that the application will be highly availability and reliablility by sending request only to servers that are online, in addition to restricting _____ to the network.
+Load balancing ensures that the application will be highly availability and reliablility by sending request only to servers that are online, in addition to restricting unwanted access to the network.
 What aspect of security do load balancers protect? What is the advantage of a jump box?Load balancers protects the system from DDoS attacks by shifting attack traffic.The advantage of jump box is to give access to the user from a 
 single node that can be secured and monitored.
 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the logs and system traffic.
-- _TODO: What does Filebeat watch for? log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
-- _TODO: What does Metricbeat record? metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
+ What does Filebeat watch for? log files or locations that you specify, collects log events, and forwards them either to Elasticsearch or Logstash for indexing.
+ What does Metricbeat record? metrics and statistics that it collects and ships them to the output that you specify, such as Elasticsearch or Logstash.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
 | Name     | Function | IP Address | Operating System |
 |----------|----------|------------|------------------|
-| Jump Box | Gateway  |  10.1.0.7  | Linux           
-| Web-1	   |          |  10.1.0.5  |                  |
-| Web-2	   |          |  10.1.0.6  |                  |
-| Web-3    |   	      |  10.1.0.8  |                  |
+| Jump Box | Gateway  |  10.1.0.7  | Linux            | 
+| Web-1	   | DVWA     |  10.1.0.5  | Linux            |
+| Web-2	   | DVWA     |  10.1.0.6  | Linux            |
+| Web-3    | DVWA     |  10.1.0.8  |  Linux           |
 
 ### Access Policies
  
