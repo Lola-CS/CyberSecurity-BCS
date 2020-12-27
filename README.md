@@ -64,17 +64,20 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- _TODO: What is the main advantage of automating configuration with Ansible?_to allow IT admin. to automate aways the drudgery from their daily tasks.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it allows IT administrators to automate away the drudgery from their daily task.
 
 The playbook implements the following tasks:
 - _TODO: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc._
-- ...
-- ...
+- Install docker.io and paython docker "pip3"
+- vm.max_map_count to use more ram "262144"
+- download and launch a docker elk container . sebp/elk: "761"
+- forward ports from container to host       5601:5601 
+                                             9200:9200
+                                             5044:5044
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![alt twxt] (Images/docker_proof.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
