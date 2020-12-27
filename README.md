@@ -45,19 +45,22 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
  
 The machines on the internal network are not exposed to the public Internet. 
 
-Only the _____ machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+Only the Jump Box  machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses: My public IP address 
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by ansible container located in my Jump box.
+Elk machine can only be acces by ansible container inside JUmp box on port22- ssh. Kibana webserver can be access by my public IP on port 80. IP of ELK machine is this 20.190.62.15.
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Web-1    |  No                 |    10.1.0.7          |
+| Web-2    |  No                 |    10.1.0.7          |
+| Web-3    |  No                 |    10.1.0.7          |
+| Elk-VM   |  No -ssh            |    10.1.0.7          | 
+| Elk-VM   |  Yes-http           | My public IP address |
+  
 
 ### Elk Configuration
 
