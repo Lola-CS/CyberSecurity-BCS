@@ -1,68 +1,63 @@
-﻿Restate the Problem-Machines accepting SSH connections that should not be 
+Restate the Problem-Machines accepting SSH connections that should not be 
 Provide a Concrete Example Scenario
-* In Project 1, did you allow SSH traffic to all of the VMs on your network? Yes 
-* Which VMs did accept SSH connections? jumbox from whilited IP
-* What happens if you try to connect to a VM that does not accept SSH connections? Connection would fail  Why?because VM does not accept SSH connection
+In Project 1, did you allow SSH traffic to all of the VMs on your network? Yes 
+Which VMs did accept SSH connections? jumbox from whilited IP
+What happens if you try to connect to a VM that does not accept SSH connections? Connection would fail  Why?because VM does not accept SSH connection
 Explain the Solution Requirements
-* If one of your Project 1 VMs accepted SSH connections, what would you assume the source of the error is? Firewall misconfiguration 
-* Which general configurations would you double-check? Firewall rules
-* What actions would you take to test that your new configurations are effective? Attempt ssh connection
+If one of your Project 1 VMs accepted SSH connections, what would you assume the source of the error is? Firewall misconfiguration 
+Which general configurations would you double-check? Firewall rules
+What actions would you take to test that your new configurations are effective? Attempt ssh connection
 Explain the Solution Details
-* Which specific panes in the Azure UI would you look at to investigate the problem? Network security group >  set up  inbound and outbound security rules
-*   * Which specific configurations and controls would you check?Inbound and Outbound rules 
-* What would you look for, specifically? SS inbound rules 
-* How would you attempt to connect to your VMs to test that your fix is effective? Attempt SSH from whitelist IP and also ssh from non whitelist IP .
+Which specific panes in the Azure UI would you look at to investigate the problem? Network security group >  set up  inbound and outbound security rules
+
+Which specific configurations and controls would you check?Inbound and Outbound rules 
+What would you look for, specifically? SS inbound rules 
+How would you attempt to connect to your VMs to test that your fix is effective? Attempt SSH from whitelist IP and also ssh from non whitelist IP .
 Identify Advantages/Disadvantages of the Solution
-   * Does your solution guarantee that the Project 1 network is now "immune" to all unauthorized access? Nothing is 100% immune .
-
-   * What monitoring controls might you add to ensure that you identify any suspicious authentication attempts?​ log in and alerting.
+Does your solution guarantee that the Project 1 network is now "immune" to all unauthorized access? Nothing is 100% immune .
 
 
-      *  SSH to jumbox only from whitelisted IP once in the jumbox could ssh to all VM in the internal network .
+What monitoring controls might you add to ensure that you identify any suspicious authentication attempts?​ log in and alerting.
+
+ SSH to jumbox only from whitelisted IP once in the jumbox could ssh to all VM in the internal network .
 Domain: Cloud Security
-      * Restate the Problem- controlling cloud access 
+Restate the Problem- controlling cloud access 
 Provide a Concrete Example Scenario
-      * In Project 1, did you deploy an on-premises or cloud network? Cloud network 
-      * Did you have to configure access controls to this network? Yes many rules were created 
-      * What kinds of access controls did you configure, and why were they necessary?whitelist personal IP create inbound controls , yes.
-      * How do these details relate to the interview question? This answers the interview question 
+In Project 1, did you deploy an on-premises or cloud network? Cloud network 
+Did you have to configure access controls to this network? Yes many rules were created 
+What kinds of access controls did you configure, and why were they necessary?whitelist personal IP create inbound controls , yes.
+How do these details relate to the interview question? This answers the interview question 
 Explain the Solution Requirements .
-      * In Project 1, what kinds of access controls did you have to implement? Consider:Whitelist personal IP creates inbound controls .
-      * NSGs around the VNet? Around the VMs? yes 
-      * Local firewalls (ufw, etc.) on each VM? No used azure firewalls
-      * Protocol allow/deny lists? Http to load balancer and SSH to jumpbox>ssh to all machines internally 
-      * What did each access control achieve, and why was this restriction necessary for the project? The goal was to control access to and from the nsg group and Vnet inside of it .
+In Project 1, what kinds of access controls did you have to implement? Consider:Whitelist personal IP creates inbound controls .
+NSGs around the VNet? Around the VMs? yes 
+Local firewalls (ufw, etc.) on each VM? No used azure firewalls
+Protocol allow/deny lists? Http to load balancer and SSH to jumpbox>ssh to all machines internally 
+What did each access control achieve, and why was this restriction necessary for the project? The goal was to control access to and from the nsg group and Vnet inside of it .
 Identify Advantages/Disadvantages of the Solution
-      * Does your solution scale?  Yes it very scalable 
-      * Is there a better solution than a jump box?This is argumental in my opinion is NO jump box is a secure computer that all admins connect to.
-      * What are the disadvantages of implementing a VPN that kept you from doing it this time? Slow down connection / blocks services -nothing stop at this time as we did minimum setup required.
-      * What are the advantages of a VPN?hides real IP address /bypass firewalls/masks online identity /encrypts online connection / protecting data from hackers and government surveillance.
-      * When is it appropriate to use a VPN?when using public Wifi to protect private data .
+Does your solution scale?  Yes it very scalable 
+Is there a better solution than a jump box?This is argumental in my opinion is NO jump box is a secure computer that all admins connect to.
+What are the disadvantages of implementing a VPN that kept you from doing it this time? Slow down connection / blocks services -nothing stop at this time as we did minimum setup required.
+What are the advantages of a VPN?hides real IP address /bypass firewalls/masks online identity /encrypts online connection / protecting data from hackers and government surveillance.
+When is it appropriate to use a VPN?when using public Wifi to protect private data .
 Domain: Logging and Monitoring
-How do you determine which alerts to set in a new monitoring system?
+How do you determine which alerts to set in a new monitoring system? Behaviour that deviates  from regular baseline activity .
 Note: In Project 1, you did not set up any alerts. However, you still have enough experience to answer this question.
-      1. Restate the Problem
+Restate the Problem
+The problem is determining the difference between normal behaviour and potentially malicious behaviour .
+Provide a Concrete Example Scenario
+Describe the network you built for Project 1. Identify the VMs on the network and what they do.
+                       Jump box-managed cloud environment from this machine only 
+                       Web1-2-3- hosting DVWA website 
+                       ELK- monitoring web1-2-3
+Which VMs should be publicly accessible? Only Jump Box- Kibana web interface on port 5601
+Which VMs should not be publicly accessible? Web-1-2-3
+Explain the Solution Requirements
+Consider the VMs that should not be publicly accessible from the internet. Which alert(s) should these VMs fire and when?Alert if someone tries to ssh from internet 
+Why should these VMs be associated with these alerts? Should not be accessible from internet 
+Explain the Solution Details
+Which tool in Project 1 would you use to set such an alert? Kibana alerts and monitors SIEM.
+What would the alert rule be? For example, would the alert fire upon a failed SSH attempt or a ping request? Failed ssh attempt 
+Identify Advantages and Disadvantages
+Are there any malicious circumstances that the alert(s) discussed above do not address?if the attacker compromised jump box server ssh alert would fail .
 
-      2. Provide a Concrete Example Scenario
 
-         * Describe the network you built for Project 1. Identify the VMs on the network and what they do.
-
-         * Which VMs should be publicly accessible?
-
-         * Which VMs should not be publicly accessible?
-
-            3. Explain the Solution Requirements
-
-               * Consider the VMs that should not be publicly accessible from the internet. Which alert(s) should these VMs fire and when?
-
-               * Why should these VMs be associated with these alerts?
-
-                  4. Explain the Solution Details
-
-                     * Which tool in Project 1 would you use to set such an alert?
-
-                     * What would the alert rule be? For example, would the alert fire upon a failed SSH attempt or a ping request?
-
-                        5. Identify Advantages and Disadvantages
-
-                           * Are there any malicious circumstances that the alert(s) discussed above do not address?
