@@ -1,0 +1,60 @@
+Add the sample web log data to Kibana.
+
+
+On the homepage click on Load a data set and a Kibana dashboard under Add sample data
+Click Add data under the Sample web logs data pane
+Click View Data to pull up the dashboard
+Answer the following questions:
+
+
+In the last 7 days, how many unique visitors were located in India? 224
+In the last 24 hours, of the visitors from China, how many were using Mac OSX? 63 -100%
+
+
+In the last 2 days, what percentage of visitors received 404 errors? How about 503 errors? Error 404-3.7%/ 503 error -2.8%
+In the last 7 days, what country produced the majority of the traffic on the website? CN
+
+Of the traffic that's coming from that country, what time of day had the highest amount of activity?hr of the day 10 -CN40
+List all the types of downloaded files that have been identified for the last 7 days, along with a short description of each file type (use Google if you aren't sure about a particular file type).gz-compressed files created using the gzip compression utility/CSS is the language for describing the presentation of Web pages, including colors, layout, and fonts/ZIP-A ZIP file, like other archive file formats, is simply a collection of one or more files and/or folders but is compressed into a single file for easy transportation and compression. The most common use for ZIP files is for software downloads/.deb -A file with the DEB file extension is a Debian Software Package file. They're used mainly in Unix-based operating systems, including Ubuntu and iOS. Every DEB file consists of two TAR archives that make up the executable files, documentation, and libraries/ rmp-A file with the RPM file extension is a Red Hat Package Manager file that's used to store installation packages on Linux operating systems.
+
+Now that you have a feel for the data, Let's dive a bit deeper. Look at the chart that shows Unique Visitors Vs. Average Bytes.
+
+
+Locate the time frame in the last 7 days with the most amount of bytes (activity).01/10/2021 18:00 avg.bites 15.709
+
+In your own words, is there anything that seems potentially strange about this activity? Yes, there was more traffic than usual on 01/11 over 15,000 average is less than 10.
+
+Filter the data by this event.
+
+
+What is the timestamp for this event?  2021-01-10T06:50:43.253Z
+What kind of file was downloaded?file was downloaded message attached - 231.142.187.121 - - [2018-07-29T06:50:43.253Z] "GET /people/type:astronauts/name:liu-boming/profile HTTP/1.1" 200 5189 "-" "Mozilla/5.0 (X11; Linux x86_64; rv:6.0a1) Gecko/20110421 Firefox/6.0a1"
+From what country did this activity originate? RU
+What HTTP response codes were encountered by this visitor? http://nytimes.com/success/charles-fullerton
+
+
+Switch to the Kibana Discover page to see more details about this activity.
+
+
+What is the source IP address of this activity? 23.203.186.61
+What are the geo coordinates of this activity?
+{
+  "lat": 35.37880028,
+  "lon": -78.73362917
+}
+
+What OS was the source machine running?  osx
+What is the full URL that was accessed?  
+https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.3.2-linux-x86_64.tar.gz
+
+From what website did the visitor's traffic originate? CN
+6.Finish your investigation with a short overview of your insights.
+
+
+What do you think the user was doing?
+Was the file they downloaded malicious? If not, what is the file used for?
+Is there anything that seems suspicious about this activity?
+Is any of the traffic you inspected potentially outside of compliance guidlines?
+Screenshot referencing to Q:4
+
+
